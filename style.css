@@ -150,14 +150,14 @@ a {
 .hero .cloud-top {
   width: 200px;
   height: 70px;
-  background: rgba(255, 255, 200, 0.5); /* soft yellow */
+  background: rgba(255, 255, 200, 0.35); /* dimmed yellow */
   top: 8%;
   left: 10%;
   border-radius: 100px;
   box-shadow:
-    60px -15px 0 10px rgba(255, 255, 220, 0.4),
-    120px 5px 0 20px rgba(255, 250, 180, 0.35),
-    -40px 10px 0 15px rgba(255, 240, 150, 0.3);
+    60px -15px 0 10px rgba(255, 255, 220, 0.25),
+    120px 5px 0 20px rgba(255, 250, 180, 0.2),
+    -40px 10px 0 15px rgba(255, 240, 150, 0.15);
   filter: blur(10px);
   animation: cloudDrift 30s ease-in-out infinite alternate;
 }
@@ -166,13 +166,13 @@ a {
   position: absolute;
   width: 160px;
   height: 55px;
-  background: rgba(255, 255, 230, 0.45); /* light white */
+  background: rgba(255, 255, 230, 0.25); /* dimmed white */
   top: 12%;
   right: 8%;
   border-radius: 100px;
   box-shadow:
-    -50px -10px 0 15px rgba(255, 255, 210, 0.4),
-    40px 8px 0 10px rgba(255, 255, 200, 0.35);
+    -50px -10px 0 15px rgba(255, 255, 210, 0.2),
+    40px 8px 0 10px rgba(255, 255, 200, 0.15);
   filter: blur(9px);
   animation: cloudDrift 25s ease-in-out infinite alternate-reverse;
   z-index: 1;
@@ -182,14 +182,14 @@ a {
 .hero .cloud-bottom {
   width: 280px;
   height: 80px;
-  background: rgba(255, 255, 210, 0.45); /* pale yellow */
+  background: rgba(255, 255, 210, 0.3); /* dimmed pale yellow */
   bottom: 15%;
   left: 5%;
   border-radius: 120px;
   box-shadow:
-    80px -10px 0 20px rgba(255, 255, 230, 0.4),
-    160px 5px 0 30px rgba(255, 255, 220, 0.35),
-    -50px 15px 0 10px rgba(255, 255, 200, 0.3);
+    80px -10px 0 20px rgba(255, 255, 230, 0.25),
+    160px 5px 0 30px rgba(255, 255, 220, 0.2),
+    -50px 15px 0 10px rgba(255, 255, 200, 0.15);
   filter: blur(12px);
   animation: cloudDrift 35s ease-in-out infinite alternate;
 }
@@ -198,13 +198,13 @@ a {
   position: absolute;
   width: 220px;
   height: 65px;
-  background: rgba(255, 255, 240, 0.4); /* very light */
+  background: rgba(255, 255, 240, 0.25); /* dimmed very light */
   bottom: 20%;
   right: 5%;
   border-radius: 110px;
   box-shadow:
-    -60px 5px 0 15px rgba(255, 255, 235, 0.4),
-    50px -8px 0 20px rgba(255, 255, 225, 0.35);
+    -60px 5px 0 15px rgba(255, 255, 235, 0.25),
+    50px -8px 0 20px rgba(255, 255, 225, 0.2);
   filter: blur(11px);
   animation: cloudDrift 28s ease-in-out infinite alternate-reverse;
   z-index: 1;
@@ -556,30 +556,67 @@ section h2 {
 /* Extra spacing for offers section */
 .offers { margin-top: 4rem; }
 
-/* Grayscale Mode */
-.grayscale-mode {
-  filter: grayscale(100%);
+/* Dark / Night Mode */
+body.grayscale-mode {
+  background: #0a0a0f;
+  color: #d0d0e0;
 }
 
-.grayscale-mode .hero {
-  background: linear-gradient(180deg, #1a1a1a 0%, #333 100%) !important;
+body.grayscale-mode .hero {
+  background: linear-gradient(180deg, #050510 0%, #1a1a2e 100%) !important;
 }
 
-.grayscale-mode .hero::before,
-.grayscale-mode .hero::after {
-  filter: grayscale(100%) brightness(0.5);
+body.grayscale-mode .hero::before {
+  background: radial-gradient(circle, rgba(100,100,255,0.2) 0%, transparent 70%);
+  filter: brightness(0.4);
 }
 
-.grayscale-mode .btn-primary,
-.grayscale-mode .btn-primary-yellow {
-  background: rgba(255, 255, 255, 0.2) !important;
+body.grayscale-mode .hero::after {
+  opacity: 0.1;
+}
+
+body.grayscale-mode .glass-card {
+  background: rgba(20, 20, 40, 0.6) !important;
+  border: 1px solid rgba(100, 100, 255, 0.1) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  color: #e0e0f0;
+}
+
+body.grayscale-mode h2,
+body.grayscale-mode .glass-card h3 {
+  color: #a0a0ff;
+}
+
+body.grayscale-mode .shop-header {
+  background: linear-gradient(135deg, #050510, #101020);
+}
+
+body.grayscale-mode .product-card {
+  background: rgba(20, 20, 40, 0.6);
+  border: 1px solid rgba(100, 100, 255, 0.1);
+}
+
+body.grayscale-mode .btn-primary,
+body.grayscale-mode .btn-primary-yellow {
+  background: rgba(100, 100, 255, 0.15) !important;
+  color: #a0a0ff !important;
+  border-color: rgba(100, 100, 255, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+body.grayscale-mode .btn-primary:hover,
+body.grayscale-mode .btn-primary-yellow:hover {
+  background: rgba(100, 100, 255, 0.3) !important;
+  border-color: rgba(100, 100, 255, 0.5) !important;
   color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-.grayscale-mode .btn-primary:hover,
-.grayscale-mode .btn-primary-yellow:hover {
-  background: rgba(255, 255, 255, 0.4) !important;
+body.grayscale-mode .cloud-top,
+body.grayscale-mode .cloud-top-2,
+body.grayscale-mode .cloud-bottom,
+body.grayscale-mode .cloud-bottom-2 {
+  opacity: 0.2;
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Theme Toggle Button */
