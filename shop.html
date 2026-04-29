@@ -118,6 +118,7 @@
 <body>
   <!-- Back to main -->
   <a href="index.html" class="back-link" aria-label="На главную" title="На главную">← 🏠</a>
+  <button class="theme-toggle" id="theme-toggle" style="left: 6rem;" title="Переключить ч/б режим">🌗</button>
 
   <header class="shop-header">
     <h1>Магазин Сантьяго</h1>
@@ -286,5 +287,22 @@
   <footer class="footer">
     <p>© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
   </footer>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('grayscale') === 'enabled') {
+      body.classList.add('grayscale-mode');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('grayscale-mode');
+      if (body.classList.contains('grayscale-mode')) {
+        localStorage.setItem('grayscale', 'enabled');
+      } else {
+        localStorage.setItem('grayscale', 'disabled');
+      }
+    });
+  </script>
 </body>
 </html>

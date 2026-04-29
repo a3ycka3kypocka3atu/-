@@ -555,3 +555,55 @@ section h2 {
 
 /* Extra spacing for offers section */
 .offers { margin-top: 4rem; }
+
+/* Grayscale Mode */
+.grayscale-mode {
+  filter: grayscale(100%);
+}
+
+.grayscale-mode .hero {
+  background: linear-gradient(180deg, #1a1a1a 0%, #333 100%) !important;
+}
+
+.grayscale-mode .hero::before,
+.grayscale-mode .hero::after {
+  filter: grayscale(100%) brightness(0.5);
+}
+
+.grayscale-mode .btn-primary,
+.grayscale-mode .btn-primary-yellow {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.grayscale-mode .btn-primary:hover,
+.grayscale-mode .btn-primary-yellow:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  left: 5rem; /* Next to the home icon */
+  top: 1.5rem;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0.35rem 0.6rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+

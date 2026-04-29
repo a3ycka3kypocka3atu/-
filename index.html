@@ -12,6 +12,7 @@
 <body>
   <!-- Home / Shop Link -->
   <a href="shop.html" class="home-icon" aria-label="Магазин" title="Магазин">🏠</a>
+  <button class="theme-toggle" id="theme-toggle" title="Переключить ч/б режим">🌗</button>
 
   <!-- Hero / Manifest -->
   <section class="hero" id="hero">
@@ -181,6 +182,24 @@
     </ul>
   </nav>
   <script src="menu.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved preference
+    if (localStorage.getItem('grayscale') === 'enabled') {
+      body.classList.add('grayscale-mode');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('grayscale-mode');
+      if (body.classList.contains('grayscale-mode')) {
+        localStorage.setItem('grayscale', 'enabled');
+      } else {
+        localStorage.setItem('grayscale', 'disabled');
+      }
+    });
+  </script>
 
   <footer class="footer">
     <p>© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
