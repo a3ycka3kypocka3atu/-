@@ -729,6 +729,15 @@ body.grayscale-mode .cloud-bottom-2 {
   text-decoration: none;
 }
 
+.home-icon .svg-home {
+  color: #2e8b57; /* Green color */
+  transition: color 0.3s ease;
+}
+
+body.grayscale-mode .home-icon .svg-home {
+  color: #00ffcc; /* Glowing turquoise in dark mode to match theme */
+}
+
 .theme-toggle {
   left: 5rem;
   width: 70px;
