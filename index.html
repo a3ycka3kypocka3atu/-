@@ -13,6 +13,14 @@
   <!-- Home / Shop Link -->
   <a href="shop.html" class="home-icon" aria-label="Магазин" title="Магазин">🏠</a>
   <button class="theme-toggle" id="theme-toggle" title="Переключить ч/б режим">🌗</button>
+  
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="cz">CZ</button>
+    <button class="lang-btn" data-lang="ua">UA</button>
+  </div>
 
   <!-- Hero / Manifest -->
   <section class="hero" id="hero">
@@ -23,147 +31,147 @@
     <div class="cloud-bottom-2"></div>
 
     <div class="glass-card hero-content">
-      <h1 class="title">Сантьяго – Цифровой Дзен</h1>
-      <p class="manifest">Больше, чем студия. Клуб, инкубатор, пространство для совместного роста.</p>
+      <h1 class="title" data-i18n="hero.title">Сантьяго – Цифровой Дзен</h1>
+      <p class="manifest" data-i18n="hero.manifest">Больше, чем студия. Клуб, инкубатор, пространство для совместного роста.</p>
       <div class="cta-group">
-        <a href="#studio" class="cta btn-primary">Практики и мероприятия</a>
-        <a href="#club" class="cta btn-primary">Стать резидентом клуба</a>
-        <a href="#create" class="cta btn-primary">Создавать вместе</a>
+        <a href="#studio" class="cta btn-primary" data-i18n="hero.cta1">Практики и мероприятия</a>
+        <a href="#club" class="cta btn-primary" data-i18n="hero.cta2">Стать резидентом клуба</a>
+        <a href="#create" class="cta btn-primary" data-i18n="hero.cta3">Создавать вместе</a>
       </div>
     </div>
   </section>
 
   <!-- Upcoming Events Carousel -->
   <section class="events" id="events">
-    <h2>Ближайшие события</h2>
+    <h2 data-i18n="events.title">Ближайшие события</h2>
     <div class="carousel">
       <div class="event-card glass-card">
-        <h3>Социальная игра "Эхо"</h3>
-        <p>12 мая 2026</p>
+        <h3 data-i18n="events.1.title">Социальная игра "Эхо"</h3>
+        <p data-i18n="events.1.date">12 мая 2026</p>
       </div>
       <div class="event-card glass-card">
-        <h3>Лекция "Инновации в медитации"</h3>
-        <p>20 мая 2026</p>
+        <h3 data-i18n="events.2.title">Лекция "Инновации в медитации"</h3>
+        <p data-i18n="events.2.date">20 мая 2026</p>
       </div>
       <div class="event-card glass-card">
-        <h3>Нетворкинг вечер</h3>
-        <p>28 мая 2026</p>
+        <h3 data-i18n="events.3.title">Нетворкинг вечер</h3>
+        <p data-i18n="events.3.date">28 мая 2026</p>
       </div>
     </div>
   </section>
 
   <!-- Studio Block -->
   <section class="studio" id="studio">
-    <h2>Студия Сантьяго</h2>
+    <h2 data-i18n="studio.title">Студия Сантьяго</h2>
     <div class="grid">
       <div class="glass-card">
-        <h3>Расписание и бронирование</h3>
-        <p>Йога, тренажёр, массаж, лекции, игры.</p>
+        <h3 data-i18n="studio.1.title">Расписание и бронирование</h3>
+        <p data-i18n="studio.1.desc">Йога, тренажёр, массаж, лекции, игры.</p>
       </div>
       <div class="glass-card">
-        <h3>Наше пространство</h3>
-        <p>Проектор, зоны отдыха, массажные столы.</p>
+        <h3 data-i18n="studio.2.title">Наше пространство</h3>
+        <p data-i18n="studio.2.desc">Проектор, зоны отдыха, массажные столы.</p>
       </div>
       <div class="glass-card">
-        <h3>Аренда и Open Mic</h3>
-        <p>Сдайте зал под мастер‑класс или лекцию.</p>
+        <h3 data-i18n="studio.3.title">Аренда и Open Mic</h3>
+        <p data-i18n="studio.3.desc">Сдайте зал под мастер‑класс или лекцию.</p>
       </div>
     </div>
   </section>
 
   <!-- Club & Community -->
   <section class="club" id="club">
-    <h2>Клуб и комьюнити</h2>
+    <h2 data-i18n="club.title">Клуб и комьюнити</h2>
     <div class="grid">
       <div class="glass-card">
-        <h3>О клубе</h3>
-        <p>Доступ к Telegram‑сообществу, скидки, взаимопомощь.</p>
+        <h3 data-i18n="club.1.title">О клубе</h3>
+        <p data-i18n="club.1.desc">Доступ к Telegram‑сообществу, скидки, взаимопомощь.</p>
       </div>
       <div class="glass-card">
-        <h3>Коливинг</h3>
-        <p>Совместное жильё для единомышленников.</p>
+        <h3 data-i18n="club.2.title">Коливинг</h3>
+        <p data-i18n="club.2.desc">Совместное жильё для единомышленников.</p>
       </div>
     </div>
   </section>
 
   <!-- Incubator -->
   <section class="incubator" id="incubator">
-    <h2>Инкубатор и проекты</h2>
+    <h2 data-i18n="inc.title">Инкубатор и проекты</h2>
     <div class="grid">
       <div class="glass-card">
-        <h3>Витрина готовых проектов</h3>
-        <p>Социальные игры, цифровые продукты.</p>
+        <h3 data-i18n="inc.1.title">Витрина готовых проектов</h3>
+        <p data-i18n="inc.1.desc">Социальные игры, цифровые продукты.</p>
       </div>
       <div class="glass-card">
-        <h3>В разработке / Краудфандинг</h3>
-        <p>Ищем команду для реновации зданий в Чехии.</p>
+        <h3 data-i18n="inc.2.title">В разработке / Краудфандинг</h3>
+        <p data-i18n="inc.2.desc">Ищем команду для реновации зданий в Чехии.</p>
       </div>
       <div class="glass-card">
-        <h3>Заявка на запуск</h3>
-        <p>Поделитесь своей идеей и реализуйте её с нами.</p>
+        <h3 data-i18n="inc.3.title">Заявка на запуск</h3>
+        <p data-i18n="inc.3.desc">Поделитесь своей идеей и реализуйте её с нами.</p>
       </div>
     </div>
   </section>
 
   <!-- Products & Services / Special Offers -->
   <section class="offers" id="offers">
-    <h2>Продукты и услуги</h2>
+    <h2 data-i18n="offers.title">Продукты и услуги</h2>
     <div class="grid">
       <div class="glass-card">
-        <h3>Продукты</h3>
-        <p>Собственные цифровые игры и приложения.</p>
-        <a href="#" class="btn-primary-yellow">Подробнее</a>
+        <h3 data-i18n="offers.1.title">Продукты</h3>
+        <p data-i18n="offers.1.desc">Собственные цифровые игры и приложения.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
       </div>
       <div class="glass-card">
-        <h3>Услуги</h3>
-        <p>Тренинги, аренда помещений, ко‑воркинг.</p>
-        <a href="#" class="btn-primary-yellow">Подробнее</a>
+        <h3 data-i18n="offers.2.title">Услуги</h3>
+        <p data-i18n="offers.2.desc">Тренинги, аренда помещений, ко‑воркинг.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
       </div>
       <div class="glass-card">
-        <h3>Специальные предложения</h3>
-        <p>Скидки, кросс‑промо, краудфандинг‑кампании.</p>
-        <a href="#" class="btn-primary-yellow">Подробнее</a>
+        <h3 data-i18n="offers.3.title">Специальные предложения</h3>
+        <p data-i18n="offers.3.desc">Скидки, кросс‑промо, краудфандинг‑кампании.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
       </div>
     </div>
   </section>
 
-    <!-- Marketplace -->
-    <section class="marketplace" id="marketplace">
-      <h2>Маркетплейс</h2>
-      <div class="grid">
-        <div class="glass-card">
-          <h3>Рукоделие</h3>
-          <p>Уникальные изделия местных мастеров.</p>
-          <a href="#" class="btn-primary-yellow">Подробнее</a>
-        </div>
-        <div class="glass-card">
-          <h3>Здоровое питание</h3>
-          <p>Органические продукты и полезные закуски.</p>
-          <a href="#" class="btn-primary-yellow">Подробнее</a>
-        </div>
-        <div class="glass-card">
-          <h3>Прочие товары</h3>
-          <p>Экологичные аксессуары и подарки.</p>
-          <a href="#" class="btn-primary-yellow">Подробнее</a>
-        </div>
+  <!-- Marketplace -->
+  <section class="marketplace" id="marketplace">
+    <h2 data-i18n="market.title">Маркетплейс</h2>
+    <div class="grid">
+      <div class="glass-card">
+        <h3 data-i18n="market.1.title">Рукоделие</h3>
+        <p data-i18n="market.1.desc">Уникальные изделия местных мастеров.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
       </div>
-    </section>
+      <div class="glass-card">
+        <h3 data-i18n="market.2.title">Здоровое питание</h3>
+        <p data-i18n="market.2.desc">Органические продукты и полезные закуски.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
+      </div>
+      <div class="glass-card">
+        <h3 data-i18n="market.3.title">Прочие товары</h3>
+        <p data-i18n="market.3.desc">Экологичные аксессуары и подарки.</p>
+        <a href="#" class="btn-primary-yellow" data-i18n="btn.details">Подробнее</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Instructors & Partners -->
   <section class="instructors" id="instructors">
-    <h2>Инструкторам и партнёрам</h2>
+    <h2 data-i18n="inst.title">Инструкторам и партнёрам</h2>
     <div class="grid">
       <div class="glass-card">
-        <h3>Как мы работаем</h3>
-        <p>Автономный партнёрский подход.</p>
+        <h3 data-i18n="inst.1.title">Как мы работаем</h3>
+        <p data-i18n="inst.1.desc">Автономный партнёрский подход.</p>
       </div>
       <div class="glass-card">
-        <h3>Галерея мастеров</h3>
-        <p>Массажисты, физиологи, тренеры.</p>
+        <h3 data-i18n="inst.2.title">Галерея мастеров</h3>
+        <p data-i18n="inst.2.desc">Массажисты, физиологи, тренеры.</p>
       </div>
       <div class="glass-card">
-        <h3>Провести свой формат</h3>
-        <p>Тестируйте новые практики в нашем пространстве.</p>
+        <h3 data-i18n="inst.3.title">Провести свой формат</h3>
+        <p data-i18n="inst.3.desc">Тестируйте новые практики в нашем пространстве.</p>
       </div>
     </div>
   </section>
@@ -172,15 +180,17 @@
   <button class="menu-trigger" aria-label="Открыть меню">☰</button>
   <nav class="quick-menu" aria-label="Навигация по секциям">
     <ul>
-      <li><a href="#hero">Главная</a></li>
-      <li><a href="#events">События</a></li>
-      <li><a href="#studio">Студия</a></li>
-      <li><a href="#club">Клуб</a></li>
-      <li><a href="#incubator">Инкубатор</a></li>
-      <li><a href="#offers">Продукты и услуги</a></li>
-      <li><a href="#instructors">Партнёры</a></li>
+      <li><a href="#hero" data-i18n="nav.home">Главная</a></li>
+      <li><a href="#events" data-i18n="nav.events">События</a></li>
+      <li><a href="#studio" data-i18n="nav.studio">Студия</a></li>
+      <li><a href="#club" data-i18n="nav.club">Клуб</a></li>
+      <li><a href="#incubator" data-i18n="nav.incubator">Инкубатор</a></li>
+      <li><a href="#offers" data-i18n="nav.offers">Продукты и услуги</a></li>
+      <li><a href="#instructors" data-i18n="nav.partners">Партнёры</a></li>
     </ul>
   </nav>
+
+  <script src="translations.js"></script>
   <script src="menu.js"></script>
   <script>
     const themeToggle = document.getElementById('theme-toggle');
@@ -202,7 +212,7 @@
   </script>
 
   <footer class="footer">
-    <p>© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
+    <p data-i18n="footer.text">© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
   </footer>
 </body>
 </html>
