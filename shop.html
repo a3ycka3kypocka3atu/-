@@ -311,14 +311,19 @@
 
     if (localStorage.getItem('grayscale') === 'enabled') {
       body.classList.add('grayscale-mode');
+      themeToggle.innerText = '☀️';
+    } else {
+      themeToggle.innerText = '🌙';
     }
 
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('grayscale-mode');
       if (body.classList.contains('grayscale-mode')) {
         localStorage.setItem('grayscale', 'enabled');
+        themeToggle.innerText = '☀️';
       } else {
         localStorage.setItem('grayscale', 'disabled');
+        themeToggle.innerText = '🌙';
       }
     });
   </script>
