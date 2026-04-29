@@ -20,10 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: 'smooth' });
       }
-      // close menu on small screens
-      if (window.innerWidth < 600) {
-        menu.classList.remove('open');
-      }
     });
   });
 });
