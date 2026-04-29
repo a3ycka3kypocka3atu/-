@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Магазин – Сантьяго</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Shop-specific styles */
+    .shop-header {
+      text-align: center;
+      padding: 5rem 1rem 2rem;
+      background: linear-gradient(135deg, #0a0c1c, #181f3a);
+    }
+    .shop-header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #f7f7f7;
+      margin-bottom: 0.5rem;
+    }
+    .shop-header p {
+      font-size: 1.15rem;
+      color: #b0b0d0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .shop-categories {
+      padding: 2rem 1rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .category-section {
+      margin-bottom: 3rem;
+    }
+    .category-section h2 {
+      font-size: 1.6rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid #ffcc00;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
+    }
+
+    .product-emoji {
+      font-size: 2.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.15rem;
+      color: #f0f0ff;
+      margin: 0;
+    }
+    .product-card p {
+      font-size: 0.92rem;
+      color: #a0a0c0;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffcc00;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .back-link {
+      position: fixed;
+      left: 1rem;
+      top: 1.5rem;
+      font-size: 1.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 0.35rem 0.6rem;
+      z-index: 1000;
+      transition: background 0.3s, transform 0.3s;
+      line-height: 1;
+      color: #eaeaea;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      background: rgba(255, 204, 0, 0.25);
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to main -->
+  <a href="index.html" class="back-link" aria-label="На главную" title="На главную">← 🏠</a>
+
+  <header class="shop-header">
+    <h1>Магазин Сантьяго</h1>
+    <p>Продукты наших резидентов и партнёров — рукоделие, здоровое питание, экотовары и многое другое.</p>
+  </header>
+
+  <main class="shop-categories">
+
+    <!-- Handmade / Crafts -->
+    <section class="category-section">
+      <h2>🧶 Рукоделие</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="product-emoji">🧣</span>
+          <h3>Вязаный шарф ручной работы</h3>
+          <p>Натуральная шерсть, тёплый и уютный.</p>
+          <div class="product-price">450 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🕯️</span>
+          <h3>Ароматическая свеча</h3>
+          <p>Соевый воск, эфирные масла лаванды.</p>
+          <div class="product-price">280 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🪡</span>
+          <h3>Вышивка на холсте</h3>
+          <p>Авторская работа, мандала-мотив.</p>
+          <div class="product-price">650 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">📿</span>
+          <h3>Браслет из натуральных камней</h3>
+          <p>Аметист, розовый кварц, тигровый глаз.</p>
+          <div class="product-price">320 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Healthy Food -->
+    <section class="category-section">
+      <h2>🥗 Здоровое питание</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="product-emoji">🍯</span>
+          <h3>Натуральный мёд</h3>
+          <p>Домашний мёд из чешских лугов, 500 г.</p>
+          <div class="product-price">220 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🌿</span>
+          <h3>Травяной чай «Спокойствие»</h3>
+          <p>Мята, мелисса, ромашка. 100 г.</p>
+          <div class="product-price">180 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🥜</span>
+          <h3>Ореховая гранола</h3>
+          <p>Без сахара, с кокосом и ягодами, 350 г.</p>
+          <div class="product-price">160 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🫒</span>
+          <h3>Оливковое масло Extra Virgin</h3>
+          <p>Холодный отжим, Греция, 500 мл.</p>
+          <div class="product-price">350 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eco & Wellness -->
+    <section class="category-section">
+      <h2>🌱 Эко и велнес</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="product-emoji">🧴</span>
+          <h3>Натуральный шампунь</h3>
+          <p>Без SLS, с маслом арганы, 250 мл.</p>
+          <div class="product-price">290 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🧘</span>
+          <h3>Коврик для йоги</h3>
+          <p>Пробковый, экологичный, нескользящий.</p>
+          <div class="product-price">890 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🪥</span>
+          <h3>Бамбуковая зубная щётка</h3>
+          <p>Набор 4 шт., биоразлагаемая.</p>
+          <div class="product-price">120 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Products -->
+    <section class="category-section">
+      <h2>💻 Цифровые продукты</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="product-emoji">🎮</span>
+          <h3>Социальная игра «Эхо»</h3>
+          <p>Цифровая версия нашей авторской игры.</p>
+          <div class="product-price">390 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">📱</span>
+          <h3>Гайд по детокс-протоколу</h3>
+          <p>Пошаговое руководство, PDF.</p>
+          <div class="product-price">250 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🎧</span>
+          <h3>Медитации (аудио-пакет)</h3>
+          <p>10 сессий по 15 минут, MP3.</p>
+          <div class="product-price">320 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="category-section">
+      <h2>🤲 Услуги</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="product-emoji">💆</span>
+          <h3>Массаж</h3>
+          <p>Классический, расслабляющий или спортивный. 60 мин.</p>
+          <div class="product-price">800 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🧭</span>
+          <h3>Менторство</h3>
+          <p>Индивидуальная сессия с ментором — бизнес, жизнь, цели. 90 мин.</p>
+          <div class="product-price">600 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🧘‍♂️</span>
+          <h3>Коллективная медитация</h3>
+          <p>Групповая практика осознанности. Каждое воскресенье, 60 мин.</p>
+          <div class="product-price">150 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🏋️</span>
+          <h3>Йога и тренировки</h3>
+          <p>Хатха-йога, стретчинг, функциональный тренинг. 75 мин.</p>
+          <div class="product-price">200 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🎲</span>
+          <h3>Социальные игры</h3>
+          <p>Настольные и авторские игры для нетворкинга. Вечер.</p>
+          <div class="product-price">250 Kč</div>
+        </div>
+        <div class="product-card">
+          <span class="product-emoji">🎤</span>
+          <h3>Лекции и мастер-классы</h3>
+          <p>Тематические встречи — питание, психология, бизнес.</p>
+          <div class="product-price">300 Kč</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
+  </footer>
+</body>
+</html>
