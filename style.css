@@ -20,9 +20,8 @@ body {
 /* Top Logo */
 .top-logo-container {
   position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0.5rem;
+  right: 5.5rem;
   z-index: 1000;
   display: flex;
   justify-content: center;
