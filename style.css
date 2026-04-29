@@ -378,6 +378,65 @@ section:target {
   pointer-events: none;
 }
 
+.hero .cloud-top-3 {
+  position: absolute;
+  width: 180px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+  top: 25%;
+  left: 20%;
+  border-radius: 100px;
+  filter: blur(12px);
+  animation: cloudDrift 28s ease-in-out infinite alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero .cloud-bottom-3 {
+  position: absolute;
+  width: 240px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.25);
+  bottom: 30%;
+  right: 25%;
+  border-radius: 100px;
+  filter: blur(15px);
+  animation: cloudDrift 32s ease-in-out infinite alternate-reverse;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Global Background Clouds */
+.bg-clouds {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.cloud-global {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  filter: blur(20px);
+  animation: cloudDrift 40s ease-in-out infinite alternate;
+}
+.cloud-global.c1 {
+  width: 300px; height: 100px; top: 30%; left: -5%;
+  box-shadow: 100px -20px 0 20px rgba(255,255,255,0.06), 200px 10px 0 30px rgba(255,255,255,0.04);
+}
+.cloud-global.c2 {
+  width: 250px; height: 80px; top: 60%; right: -5%;
+  animation-duration: 45s;
+  animation-direction: alternate-reverse;
+  box-shadow: -80px 15px 0 20px rgba(255,255,255,0.05);
+}
+.cloud-global.c3 {
+  width: 400px; height: 120px; top: 85%; left: 15%;
+  animation-duration: 50s;
+  box-shadow: 150px -30px 0 40px rgba(255,255,255,0.04);
+}
+
 @keyframes twinkle {
   0% { opacity: 0.6; }
   100% { opacity: 0.9; }
@@ -723,7 +782,9 @@ body.grayscale-mode .cloud-bottom-2 {
 
 .home-icon {
   left: 1.5rem; /* Base left alignment */
-  width: 42px; /* Standardize width to match height closely for circular feel */
+  top: calc(1.5rem - 4px); /* Shift up to vertically center with 40px tall pill buttons */
+  width: 48px; 
+  height: 48px; /* Make it bigger than the other 40px buttons */
   border-radius: 50%;
   font-size: 1.5rem;
   text-decoration: none;
