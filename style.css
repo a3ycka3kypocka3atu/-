@@ -137,7 +137,13 @@ body.grayscale-mode .hero::after {
 
 body.grayscale-mode .hero .stars {
   opacity: 1;
-  animation: starTwinkle 4s infinite alternate;
+  animation: starFlash 2s ease-out forwards, starTwinkle 4s 2s infinite alternate;
+}
+
+@keyframes starFlash {
+  0% { opacity: 0; filter: brightness(1) drop-shadow(0 0 0px #fff); transform: scale(0.9); }
+  40% { opacity: 1; filter: brightness(3) drop-shadow(0 0 15px #fff); transform: scale(1.05); }
+  100% { opacity: 1; filter: brightness(1) drop-shadow(0 0 0px #fff); transform: scale(1); }
 }
 
 @keyframes starTwinkle {
@@ -166,6 +172,13 @@ body.grayscale-mode .hero .moon {
   right: 15%;
   opacity: 1;
   transform: rotate(-15deg);
+  animation: moonFlash 2.5s ease-out forwards;
+}
+
+@keyframes moonFlash {
+  0% { filter: drop-shadow(0 0 15px rgba(255,239,176,0.5)) brightness(1); }
+  40% { filter: drop-shadow(0 0 60px rgba(255,255,255,1)) brightness(2.5); }
+  100% { filter: drop-shadow(0 0 15px rgba(255,239,176,0.5)) brightness(1); }
 }
 
 /* Sections snap to viewport */
