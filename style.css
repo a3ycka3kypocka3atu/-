@@ -91,6 +91,8 @@ a {
     #ffe17a 85%,
     #fff5d6 100%
   );
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
   position: relative;
   overflow: hidden;
 }
