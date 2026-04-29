@@ -1,7 +1,6 @@
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 25vh; /* Places the section nicely in the middle when clicked */
 }
 
 html, body {
@@ -181,17 +180,28 @@ body.grayscale-mode .hero .moon {
   100% { filter: drop-shadow(0 0 15px rgba(255,239,176,0.5)) brightness(1); }
 }
 
-/* Sections snap to viewport */
+/* Sections */
 section {
-  scroll-snap-align: start;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px 40px;
+  padding: 60px 20px;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
+  transition: filter 0.5s ease;
+}
+
+/* Flash effect when a section is clicked from the menu */
+section:target {
+  animation: highlightLayer 2s ease-out;
+}
+
+@keyframes highlightLayer {
+  0% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  30% { transform: scale(1.02); filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 204, 0, 0.3)); z-index: 10; }
+  100% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 0 transparent); }
 }
 
 /* Sun glow */
