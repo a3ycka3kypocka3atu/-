@@ -294,9 +294,14 @@ section:target {
 /* Fluffy clouds — built with box-shadows */
 .hero-content {
   text-align: center;
-  max-width: 800px;
+  max-width: 950px;
   position: relative;
   z-index: 2;
+  padding: 4rem 2rem !important;
+  backdrop-filter: blur(25px) !important; /* Stronger matte effect */
+  background: rgba(15, 15, 30, 0.2) !important; /* Deeper, more craft/matte color */
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Cloud layer — top */
@@ -698,28 +703,84 @@ body.grayscale-mode .cloud-bottom-2 {
 }
 
 /* Theme Toggle Button */
-.theme-toggle {
+.theme-toggle, .home-icon {
   position: fixed;
-  left: 5rem; /* Next to the home icon */
   top: 1.5rem;
-  font-size: 1.4rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  padding: 0.35rem 0.6rem;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: #fff;
+  background: rgba(20, 20, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
-.theme-toggle:hover {
+.home-icon {
+  left: 1rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.theme-toggle {
+  left: 5rem;
+  width: 70px;
+  height: 36px;
+  border-radius: 18px;
+  justify-content: space-between;
+  padding: 0 6px;
+  top: 1.8rem; /* Align vertically with the home icon */
+}
+
+.theme-toggle:hover, .home-icon:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.theme-toggle .icon-sun, .theme-toggle .icon-moon {
+  font-size: 1.1rem;
+  z-index: 1;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, text-shadow 0.3s ease;
+}
+
+.theme-toggle .toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Day state (light mode) */
+body:not(.grayscale-mode) .theme-toggle .icon-sun {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
+}
+body:not(.grayscale-mode) .theme-toggle .toggle-thumb {
+  transform: translateX(0);
+}
+
+/* Night state (dark mode) */
+body.grayscale-mode .theme-toggle .icon-moon {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 255, 204, 0.8);
+}
+body.grayscale-mode .theme-toggle .toggle-thumb {
+  transform: translateX(34px); /* 70 - 28 - 6 - 2 */
 }
 
 /* Language Switcher */
