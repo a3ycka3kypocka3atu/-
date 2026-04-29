@@ -74,6 +74,7 @@ a {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  /* Daytime gradient */
   background: linear-gradient(
     180deg,
     #0a0c1c 0%,
@@ -87,6 +88,79 @@ a {
   );
   position: relative;
   overflow: hidden;
+}
+
+/* Night mode for the hero */
+body.grayscale-mode .hero {
+  /* Deep night sky gradient */
+  background: radial-gradient(circle at 50% 20%, #0d1a2b, #00112d 70%);
+  /* Hide the sun glow */
+  animation: none;
+}
+
+/* Sun glow disappears in dark mode */
+body.grayscale-mode .hero::before {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Stars overlay – hidden by default, shown in dark mode */
+.hero .stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0;
+  animation: twinkle 2s infinite alternate;
+  z-index: 1;
+}
+
+body.grayscale-mode .hero .stars {
+  opacity: 0.85;
+  animation: twinkle 3s infinite alternate;
+}
+
+/* Moon – hidden in day, visible in night */
+.hero .moon {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #e0e0e0);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  opacity: 0;
+  transform: rotate(20deg);
+  transition: opacity 0.8s ease;
+  z-index: 2;
+}
+
+body.grayscale-mode .hero .moon {
+  opacity: 1;
+}
+
+/* Crescent shape – mask part of the moon */
+.hero .moon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, #0d1a2b, #00112d);
+  border-radius: 50%;
+  transform: translateX(15px) translateY(5px);
+}
+
+/* Sections snap to viewport */
+section {
+  scroll-snap-align: start;
+  min-height: 100vh;
 }
 
 /* Sun glow */
@@ -481,6 +555,12 @@ section h2 {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure smooth scrolling for all sections */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 /* Glow animation for active link */
