@@ -150,14 +150,14 @@ a {
 .hero .cloud-top {
   width: 200px;
   height: 70px;
-  background: rgba(255, 255, 200, 0.35); /* dimmed yellow */
+  background: rgba(180, 200, 255, 0.45); /* light blue */
   top: 8%;
   left: 10%;
   border-radius: 100px;
   box-shadow:
-    60px -15px 0 10px rgba(255, 255, 220, 0.25),
-    120px 5px 0 20px rgba(255, 250, 180, 0.2),
-    -40px 10px 0 15px rgba(255, 240, 150, 0.15);
+    60px -15px 0 10px rgba(160, 180, 255, 0.35),
+    120px 5px 0 20px rgba(150, 170, 255, 0.3),
+    -40px 10px 0 15px rgba(170, 190, 255, 0.25);
   filter: blur(10px);
   animation: cloudDrift 30s ease-in-out infinite alternate;
 }
@@ -166,13 +166,13 @@ a {
   position: absolute;
   width: 160px;
   height: 55px;
-  background: rgba(255, 255, 230, 0.25); /* dimmed white */
+  background: rgba(190, 210, 255, 0.35); /* light blue-white */
   top: 12%;
   right: 8%;
   border-radius: 100px;
   box-shadow:
-    -50px -10px 0 15px rgba(255, 255, 210, 0.2),
-    40px 8px 0 10px rgba(255, 255, 200, 0.15);
+    -50px -10px 0 15px rgba(180, 200, 255, 0.3),
+    40px 8px 0 10px rgba(170, 190, 255, 0.25);
   filter: blur(9px);
   animation: cloudDrift 25s ease-in-out infinite alternate-reverse;
   z-index: 1;
@@ -182,14 +182,14 @@ a {
 .hero .cloud-bottom {
   width: 280px;
   height: 80px;
-  background: rgba(255, 255, 210, 0.3); /* dimmed pale yellow */
+  background: rgba(200, 220, 255, 0.4); /* pale blue */
   bottom: 15%;
   left: 5%;
   border-radius: 120px;
   box-shadow:
-    80px -10px 0 20px rgba(255, 255, 230, 0.25),
-    160px 5px 0 30px rgba(255, 255, 220, 0.2),
-    -50px 15px 0 10px rgba(255, 255, 200, 0.15);
+    80px -10px 0 20px rgba(180, 200, 255, 0.35),
+    160px 5px 0 30px rgba(170, 190, 255, 0.3),
+    -50px 15px 0 10px rgba(190, 210, 255, 0.25);
   filter: blur(12px);
   animation: cloudDrift 35s ease-in-out infinite alternate;
 }
@@ -198,82 +198,18 @@ a {
   position: absolute;
   width: 220px;
   height: 65px;
-  background: rgba(255, 255, 240, 0.25); /* dimmed very light */
+  background: rgba(210, 230, 255, 0.35); /* very light blue */
   bottom: 20%;
   right: 5%;
   border-radius: 110px;
   box-shadow:
-    -60px 5px 0 15px rgba(255, 255, 235, 0.25),
-    50px -8px 0 20px rgba(255, 255, 225, 0.2);
+    -60px 5px 0 15px rgba(200, 220, 255, 0.3),
+    50px -8px 0 20px rgba(190, 210, 255, 0.25);
   filter: blur(11px);
   animation: cloudDrift 28s ease-in-out infinite alternate-reverse;
   z-index: 1;
   pointer-events: none;
 }
-
-  width: 200px;
-  height: 70px;
-  background: rgba(200, 150, 230, 0.45);
-  top: 8%;
-  left: 10%;
-  border-radius: 100px;
-  box-shadow:
-    60px -15px 0 10px rgba(180, 130, 210, 0.35),
-    120px 5px 0 20px rgba(160, 110, 200, 0.30),
-    -40px 10px 0 15px rgba(190, 140, 220, 0.25);
-  filter: blur(12px);
-  animation: cloudDrift 30s ease-in-out infinite alternate;
-}
-
-.hero .cloud-top-2 {
-  position: absolute;
-  width: 160px;
-  height: 55px;
-  background: rgba(220, 180, 250, 0.4);
-  top: 12%;
-  right: 8%;
-  border-radius: 100px;
-  box-shadow:
-    -50px -10px 0 15px rgba(200, 150, 230, 0.35),
-    40px 8px 0 10px rgba(180, 130, 210, 0.30);
-  filter: blur(10px);
-  animation: cloudDrift 25s ease-in-out infinite alternate-reverse;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero .cloud-bottom {
-  width: 280px;
-  height: 80px;
-  background: rgba(250, 210, 180, 0.45);
-  bottom: 15%;
-  left: 5%;
-  border-radius: 120px;
-  box-shadow:
-    80px -10px 0 20px rgba(240, 200, 150, 0.35),
-    160px 5px 0 30px rgba(230, 170, 130, 0.30),
-    -50px 15px 0 10px rgba(250, 220, 200, 0.25);
-  filter: blur(14px);
-  animation: cloudDrift 35s ease-in-out infinite alternate;
-}
-
-.hero .cloud-bottom-2 {
-  position: absolute;
-  width: 220px;
-  height: 65px;
-  background: rgba(255, 230, 200, 0.4);
-  bottom: 20%;
-  right: 5%;
-  border-radius: 110px;
-  box-shadow:
-    -60px 5px 0 15px rgba(250, 230, 210, 0.35),
-    50px -8px 0 20px rgba(240, 210, 180, 0.30);
-  filter: blur(12px);
-  animation: cloudDrift 28s ease-in-out infinite alternate-reverse;
-  z-index: 1;
-  pointer-events: none;
-}
-
 /* Starfield overlay */
 .hero .stars {
   position: absolute;
@@ -298,75 +234,7 @@ a {
   0%   { transform: translateX(0); }
   100% { transform: translateX(40px); }
 }
-  position: absolute;
-  border-radius: 50%;
-  z-index: 1;
-  pointer-events: none;
-}
 
-.hero .cloud-top {
-  width: 200px;
-  height: 70px;
-  background: rgba(180, 130, 200, 0.25);
-  top: 8%;
-  left: 10%;
-  border-radius: 100px;
-  box-shadow:
-    60px -15px 0 10px rgba(160, 110, 190, 0.2),
-    120px 5px 0 20px rgba(140, 90, 180, 0.18),
-    -40px 10px 0 15px rgba(170, 120, 195, 0.15);
-  filter: blur(18px);
-  animation: cloudDrift 30s ease-in-out infinite alternate;
-}
-
-.hero .cloud-top-2 {
-  position: absolute;
-  width: 160px;
-  height: 55px;
-  background: rgba(200, 150, 220, 0.2);
-  top: 12%;
-  right: 8%;
-  border-radius: 100px;
-  box-shadow:
-    -50px -10px 0 15px rgba(180, 130, 210, 0.18),
-    40px 8px 0 10px rgba(160, 110, 200, 0.15);
-  filter: blur(16px);
-  animation: cloudDrift 25s ease-in-out infinite alternate-reverse;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero .cloud-bottom {
-  width: 280px;
-  height: 80px;
-  background: rgba(220, 170, 140, 0.22);
-  bottom: 15%;
-  left: 5%;
-  border-radius: 120px;
-  box-shadow:
-    80px -10px 0 20px rgba(210, 150, 120, 0.2),
-    160px 5px 0 30px rgba(200, 140, 110, 0.18),
-    -50px 15px 0 10px rgba(220, 160, 130, 0.15);
-  filter: blur(20px);
-  animation: cloudDrift 35s ease-in-out infinite alternate;
-}
-
-.hero .cloud-bottom-2 {
-  position: absolute;
-  width: 220px;
-  height: 65px;
-  background: rgba(240, 180, 160, 0.2);
-  bottom: 20%;
-  right: 5%;
-  border-radius: 110px;
-  box-shadow:
-    -60px 5px 0 15px rgba(230, 170, 150, 0.18),
-    50px -8px 0 20px rgba(220, 160, 140, 0.15);
-  filter: blur(18px);
-  animation: cloudDrift 28s ease-in-out infinite alternate-reverse;
-  z-index: 1;
-  pointer-events: none;
-}
 
 @keyframes cloudDrift {
   0%   { transform: translateX(0); }
