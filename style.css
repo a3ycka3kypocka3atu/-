@@ -90,18 +90,32 @@ a {
   overflow: hidden;
 }
 
-/* Night mode for the hero */
-body.grayscale-mode .hero {
-  /* Deep night sky gradient */
+/* Night overlay for smooth crossfade */
+.night-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
   background: radial-gradient(circle at 50% 20%, #0d1a2b, #00112d 70%);
-  /* Hide the sun glow */
-  animation: none;
+  opacity: 0;
+  transition: opacity 2.5s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+body.grayscale-mode .night-overlay {
+  opacity: 1;
 }
 
-/* Sun glow disappears in dark mode */
+/* Hide the sun glow smoothly */
 body.grayscale-mode .hero::before {
+  bottom: -40%;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: bottom 2.5s ease-in-out, opacity 2s ease-in-out;
+}
+
+/* Hide sun rays smoothly */
+body.grayscale-mode .hero::after {
+  bottom: -40%;
+  opacity: 0;
+  transition: bottom 2.5s ease-in-out, opacity 2s ease-in-out;
 }
 
 /* Stars overlay – hidden by default, shown in dark mode */
@@ -116,7 +130,7 @@ body.grayscale-mode .hero::before {
   background-repeat: repeat;
   background-size: 250px 250px;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 2.5s ease-in-out;
   z-index: 1;
 }
 
@@ -134,22 +148,23 @@ body.grayscale-mode .hero .stars {
 .hero .moon {
   position: absolute;
   top: 15%;
-  right: 15%;
+  right: -20%; /* Start off-screen */
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background: transparent;
-  /* This box-shadow creates a perfect crescent shape! */
   box-shadow: -22px 10px 0 0 #ffefb0; 
   opacity: 0;
-  transform: rotate(-15deg);
-  transition: opacity 0.8s ease;
+  transform: rotate(30deg);
+  transition: right 2.5s ease-in-out, transform 2.5s ease-in-out, opacity 2.5s ease-in-out;
   z-index: 2;
   filter: drop-shadow(0 0 15px rgba(255,239,176,0.5));
 }
 
 body.grayscale-mode .hero .moon {
+  right: 15%;
   opacity: 1;
+  transform: rotate(-15deg);
 }
 
 /* Sections snap to viewport */
@@ -171,6 +186,7 @@ section {
   border-radius: 50%;
   filter: blur(30px);
   animation: sunPulse 5s ease-in-out infinite;
+  transition: bottom 2.5s ease-in-out, opacity 2.5s ease-in-out;
   z-index: 0;
 }
 
@@ -210,6 +226,7 @@ section {
     );
   filter: blur(8px);
   animation: raysRotate 20s linear infinite;
+  transition: bottom 2.5s ease-in-out, opacity 2.5s ease-in-out;
   z-index: 0;
 }
 
@@ -564,18 +581,15 @@ body.grayscale-mode {
   color: #d0d0e0;
 }
 
+body, .glass-card, .btn-primary, .btn-primary-yellow, h2, h3 {
+  transition: background 1.5s ease, color 1.5s ease, border-color 1.5s ease, box-shadow 1.5s ease, filter 1.5s ease;
+}
+
 body.grayscale-mode .hero {
-  background: linear-gradient(180deg, #050510 0%, #1a1a2e 100%) !important;
+  /* Removed static background to allow crossfade via .night-overlay */
 }
 
-body.grayscale-mode .hero::before {
-  background: radial-gradient(circle, rgba(100,100,255,0.2) 0%, transparent 70%);
-  filter: brightness(0.4);
-}
 
-body.grayscale-mode .hero::after {
-  opacity: 0.1;
-}
 
 body.grayscale-mode .glass-card {
   background: rgba(20, 20, 40, 0.6) !important;
