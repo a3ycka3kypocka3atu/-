@@ -718,12 +718,12 @@ body.grayscale-mode .cloud-bottom-2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   padding: 0;
+  height: 40px; /* Standardize height */
 }
 
 .home-icon {
-  left: 1rem;
-  width: 45px;
-  height: 45px;
+  left: 1.5rem; /* Base left alignment */
+  width: 42px; /* Standardize width to match height closely for circular feel */
   border-radius: 50%;
   font-size: 1.5rem;
   text-decoration: none;
@@ -739,13 +739,12 @@ body.grayscale-mode .home-icon .svg-home {
 }
 
 .theme-toggle {
-  left: 5rem;
-  width: 70px;
-  height: 36px;
-  border-radius: 18px;
+  left: 5rem; /* 1.5rem + 42px + 1rem (approx 5.1rem, 5rem is fine) */
+  width: 72px;
+  border-radius: 20px; /* Half of 40px */
   justify-content: space-between;
   padding: 0 6px;
-  top: 1.8rem; /* Align vertically with the home icon */
+  /* top is inherited as 1.5rem */
 }
 
 .theme-toggle:hover, .home-icon:hover {
@@ -762,10 +761,10 @@ body.grayscale-mode .home-icon .svg-home {
 
 .theme-toggle .toggle-thumb {
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 28px;
-  height: 28px;
+  top: 2px;
+  left: 2px;
+  width: 34px;
+  height: 34px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   z-index: 0;
@@ -789,22 +788,25 @@ body.grayscale-mode .theme-toggle .icon-moon {
   text-shadow: 0 0 8px rgba(0, 255, 204, 0.8);
 }
 body.grayscale-mode .theme-toggle .toggle-thumb {
-  transform: translateX(34px); /* 70 - 28 - 6 - 2 */
+  transform: translateX(34px); /* 72 - 34 - 4 */
 }
 
 /* Language Switcher */
 .lang-switcher {
   position: fixed;
-  left: 9.5rem; /* Next to the theme toggle */
+  left: 10.5rem; /* Next to the theme toggle */
   top: 1.5rem;
+  height: 40px;
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.25rem;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  padding: 0.25rem;
+  background: rgba(20, 20, 40, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .lang-btn {
@@ -813,10 +815,10 @@ body.grayscale-mode .theme-toggle .toggle-thumb {
   color: #b0b0d0;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 14px;
   transition: all 0.2s ease;
 }
 
