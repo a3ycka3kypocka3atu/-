@@ -536,7 +536,11 @@ section h2 {
   display: flex;
   overflow-x: auto;
   gap: 1.5rem;
-  padding: 1rem 5vw;
+  /* Align first card with the main grid which has max-width: 1200px and 1rem padding */
+  padding-left: max(1rem, calc((100vw - 1200px) / 2 + 1rem));
+  padding-right: max(1rem, calc((100vw - 1200px) / 2 + 1rem));
+  padding-top: 1rem;
+  padding-bottom: 2rem;
   width: 100vw;
   max-width: none;
   position: relative;
@@ -544,26 +548,18 @@ section h2 {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 .carousel::-webkit-scrollbar {
-  height: 8px;
-}
-.carousel::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
-.carousel::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  display: none; /* WebKit */
 }
 .event-card {
   min-width: 280px;
   flex: 0 0 auto;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 }
 
 /* Footer */
