@@ -13,6 +13,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   transition: filter 2.5s ease;
+  overflow-x: hidden;
   min-height: 100vh;
   animation: pageFadeIn 0.6s ease-out forwards;
 }
@@ -535,9 +536,14 @@ section h2 {
   display: flex;
   overflow-x: auto;
   gap: 1.5rem;
-  padding: 1rem 2rem;
-  width: 100%;
-  max-width: 1200px;
+  padding: 1rem 5vw;
+  width: 100vw;
+  max-width: none;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
   scroll-snap-type: x mandatory;
@@ -810,6 +816,34 @@ body:not(.main-page) .theme-toggle {
   position: fixed;
   top: calc(1.5rem + 14px);
   right: 1.5rem;
+}
+
+/* Desktop vs Mobile Controls */
+.desktop-controls {
+  display: flex;
+}
+.desktop-controls .theme-toggle {
+  position: fixed;
+  left: 6rem;
+  top: calc(1.5rem + 14px);
+  transform: translateY(-50%);
+}
+.desktop-controls .lang-switcher {
+  position: fixed;
+  left: 10.5rem;
+  top: calc(1.5rem + 14px);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .desktop-controls {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .quick-menu .menu-controls {
+    display: none;
+  }
 }
 
 .home-icon {
