@@ -617,17 +617,14 @@ section h2 {
   height: 100vh;
   padding: 6rem 2rem 2rem;
   box-sizing: border-box;
-  background: rgba(10, 12, 28, 0.95);
-  backdrop-filter: blur(20px);
+  background: transparent;
   z-index: 999;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end; /* Align to the right so it looks good when sliding from right */
   justify-content: flex-start;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   gap: 2rem;
 }
 
@@ -641,7 +638,7 @@ section h2 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end; /* Align links to right */
   width: 100%;
   gap: 1.5rem;
 }
@@ -662,6 +659,7 @@ section h2 {
   margin-top: auto;
   display: flex;
   flex-direction: column;
+  align-items: flex-end; /* Align toggles to right */
   gap: 1.5rem;
   width: 100%;
   opacity: 0;
