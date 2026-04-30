@@ -532,27 +532,30 @@ section h2 {
 .carousel {
   display: flex;
   overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
   width: 100%;
   max-width: 1200px;
   scrollbar-width: thin;
-  scrollbar-color: #555 #222;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 .carousel::-webkit-scrollbar {
   height: 8px;
 }
 .carousel::-webkit-scrollbar-track {
-  background: #111;
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 .carousel::-webkit-scrollbar-thumb {
-  background: #444;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 .event-card {
-  min-width: 200px;
+  min-width: 280px;
   flex: 0 0 auto;
+  scroll-snap-align: center;
 }
 
 /* Footer */
