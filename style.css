@@ -53,25 +53,7 @@ a {
   text-decoration: none;
 }
 
-/* Home Icon */
-.home-icon {
-  position: fixed;
-  left: 1rem;
-  top: 1.5rem;
-  font-size: 1.6rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  padding: 0.35rem 0.5rem;
-  z-index: 1000;
-  transition: background 0.3s, transform 0.3s;
-  line-height: 1;
-}
-.home-icon:hover {
-  background: rgba(255, 204, 0, 0.25);
-  transform: scale(1.15);
-}
+
 
 /* Glass Card Base */
 .glass-card {
@@ -687,7 +669,7 @@ section h2 {
   font-weight: 600;
   font-size: 0.9rem;
   display: block;
-  text-align: center;
+  text-align: right;
   white-space: nowrap;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -703,11 +685,7 @@ section h2 {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure smooth scrolling for all sections */
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
+
 
 /* Glow animation for active link */
 @keyframes glow {
