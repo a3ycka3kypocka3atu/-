@@ -532,22 +532,23 @@ section h2 {
 }
 
 /* Events Carousel */
+.events {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: visible;
+}
+
 .carousel {
   display: flex;
   overflow-x: auto;
   gap: 1.5rem;
-  /* Align first card with the main grid which has max-width: 1200px and 1rem padding */
+  /* First card aligns with the grid (max-width 1200px centered + 1rem padding) */
   padding-left: max(1rem, calc((100vw - 1200px) / 2 + 1rem));
-  padding-right: max(1rem, calc((100vw - 1200px) / 2 + 1rem));
+  padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  width: 100vw;
-  max-width: none;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  box-sizing: border-box;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   scroll-snap-type: x mandatory;
