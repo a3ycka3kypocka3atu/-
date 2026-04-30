@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: 'smooth' });
+        // close menu after clicking a link
+        menu.classList.remove('open');
       }
     });
   });
