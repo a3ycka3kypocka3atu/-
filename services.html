@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Услуги Студии Сантьяго — массаж, чайные церемонии, йога, тренировки." />
+  <title>Услуги | Сантьяго</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-clouds">
+    <div class="cloud-global c1"></div>
+    <div class="cloud-global c2"></div>
+    <div class="cloud-global c3"></div>
+  </div>
+
+  <a href="index.html" class="top-logo-container" aria-label="На главную" title="На главную">
+    <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" class="top-logo-svg">
+      <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="100" cy="90" r="50"/><line x1="100" y1="15" x2="100" y2="30"/><line x1="135" y1="25" x2="125" y2="40"/><line x1="165" y1="50" x2="150" y2="60"/><line x1="180" y1="90" x2="165" y2="90"/><line x1="65" y1="25" x2="75" y2="40"/><line x1="35" y1="50" x2="50" y2="60"/><line x1="20" y1="90" x2="35" y2="90"/>
+        <circle cx="100" cy="80" r="14"/><path d="M100 70 Q105 76 100 87 Q94 80 100 70" fill="currentColor" stroke="none"/>
+        <line x1="100" y1="65" x2="100" y2="40"/><line x1="115" y1="80" x2="140" y2="80"/><line x1="85" y1="80" x2="60" y2="80"/>
+        <line x1="52" y1="105" x2="148" y2="105"/>
+        <path d="M98 105 Q115 115 90 125 T95 140 L105 140 Q85 125 110 115 T103 105 Z" fill="currentColor" stroke="none"/>
+      </g>
+      <text x="100" y="180" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="28" fill="currentColor" letter-spacing="2">SANTIAGO</text>
+      <text x="100" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="14" fill="currentColor" letter-spacing="6">WAY</text>
+    </svg>
+  </a>
+
+  <a href="shop.html" class="home-icon" aria-label="Магазин" title="Магазин">
+    <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="svg-home">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+    </svg>
+  </a>
+
+  <div class="desktop-controls">
+    <button class="theme-toggle theme-toggle-btn" title="Переключить дзен-режим">
+      <span class="icon-sun">☀️</span><span class="icon-moon">🌙</span><span class="toggle-thumb"></span>
+    </button>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="cz">CZ</button>
+      <button class="lang-btn" data-lang="ua">UA</button>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE CONTENT ═══ -->
+  <div class="page-wrapper">
+
+    <div class="gallery-header">
+      <h1 data-i18n="services.page.title">Наши услуги</h1>
+      <p data-i18n="services.page.desc">Всё, что мы предлагаем для вашего тела, разума и развития — в одном месте.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Service Card: Massage -->
+      <a href="offer.html" class="preview-card" id="card-massage">
+        <div class="preview-card__icon">💆</div>
+        <div class="preview-card__body">
+          <h3 data-i18n="services.massage.name">Глубокий массаж и чайная церемония</h3>
+          <span class="preview-role" data-i18n="services.massage.price">1200 CZK · ≈ 48–50 EUR</span>
+          <p data-i18n="services.massage.short">Терапевтический массаж с диагностикой тела, мужские и женские программы. Включает 30–60 мин чайной церемонии.</p>
+          <span class="preview-card__cta">
+            <span data-i18n="btn.details">Подробнее</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Placeholder for future services -->
+
+    </div>
+
+  </div>
+
+  <button class="menu-trigger" aria-label="Открыть меню">☰</button>
+  <nav class="quick-menu" aria-label="Навигация">
+    <ul>
+      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+      <li><a href="index.html#events" data-i18n="nav.events">События</a></li>
+      <li><a href="index.html#studio" data-i18n="nav.studio">Студия</a></li>
+      <li><a href="index.html#instructors" data-i18n="nav.partners">Партнёры</a></li>
+      <li><a href="index.html#club" data-i18n="nav.club">Клуб</a></li>
+    </ul>
+    <div class="menu-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="cz">CZ</button>
+        <button class="lang-btn" data-lang="ua">UA</button>
+      </div>
+      <button class="theme-toggle theme-toggle-btn" title="Переключить дзен-режим">
+        <span class="icon-sun">☀️</span><span class="icon-moon">🌙</span><span class="toggle-thumb"></span>
+      </button>
+    </div>
+  </nav>
+
+  <footer class="footer">
+    <p data-i18n="footer.text">© 2026 Сантьяго – Цифровой Дзен. Все права защищены.</p>
+  </footer>
+
+  <script src="translations.js?v=4"></script>
+  <script src="menu.js"></script>
+  <script>
+    const themeToggles = document.querySelectorAll('.theme-toggle-btn');
+    if (localStorage.getItem('grayscale') === 'enabled') document.body.classList.add('grayscale-mode');
+    themeToggles.forEach(t => t.addEventListener('click', () => {
+      document.body.classList.toggle('grayscale-mode');
+      localStorage.setItem('grayscale', document.body.classList.contains('grayscale-mode') ? 'enabled' : 'disabled');
+    }));
+  </script>
+</body>
+</html>
