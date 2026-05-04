@@ -15,8 +15,8 @@ window.onTelegramAuth = function(user) {
   'use strict';
 
   // ── SUPABASE SETUP ──
-  const SUPABASE_URL = 'https://qagxvtdgcilfczmxaeuc.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_zGlFgKrGQ_RGvMGfVVOteA_tjo3MOLi';
+  const SUPABASE_URL = 'https://mnqrblzdpdttdynlpqey.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_zGlFgKrGQ_RGvMGfVVOteA_tjo3MOLi'; // Note: This might need updating too if project changed
 
   let sb = null;
   if (window.supabase) {
