@@ -1,0 +1,257 @@
+require('dotenv').config();
+const { Telegraf, Markup, session } = require('telegraf');
+const { createClient } = require('@supabase/supabase-js');
+
+// ── ENV CONFIG ──
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
+
+if (!BOT_TOKEN || !SUPABASE_URL || !SUPABASE_KEY) {
+  console.error("Missing required environment variables.");
+  process.exit(1);
+}
+
+const bot = new Telegraf(BOT_TOKEN);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+bot.use(session());
+
+// ── MIDDLEWARE: UPSERT USER IN DB ──
+bot.use(async (ctx, next) => {
+  if (ctx.from && ctx.chat?.type === 'private') {
+    // First, try to fetch to avoid unnecessary updates if role exists
+    const { data: profile, error: fetchError } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('telegram_id', ctx.from.id)
+      .single();
+
+    if (fetchError && fetchError.code === 'PGRST116') {
+      // Create guest profile
+      await supabase.from('profiles').insert({
+        telegram_id: ctx.from.id,
+        username: ctx.from.username,
+        full_name: ctx.from.first_name + (ctx.from.last_name ? ' ' + ctx.from.last_name : ''),
+        role: 'guest'
+      });
+      ctx.userRole = 'guest';
+    } else if (profile) {
+      ctx.userRole = profile.role;
+    } else {
+      ctx.userRole = 'guest'; // Fallback
+    }
+  }
+  return next();
+});
+
+// ── START COMMAND & MAIN MENU ──
+const mainMenu = Markup.inlineKeyboard([
+  [Markup.button.callback('ℹ️ Про проєкт (FAQ)', 'faq_about')],
+  [Markup.button.callback('🧘 Напрямки', 'faq_directions')],
+  [Markup.button.callback('🔑 Як працює клуб', 'faq_club')],
+  [Markup.button.callback('🚀 Вступити до клубу', 'apply_club')],
+  [Markup.button.callback('⚙️ Панель Інструктора/Адміна', 'instructor_menu')]
+]);
+
+bot.start((ctx) => {
+  ctx.reply(
+    `Вітаємо у боті студії Santiago! 👋\n\nТут ви можете дізнатися більше про нас, подати заявку до клубу або керувати розкладом (для інструкторів).`,
+    mainMenu
+  );
+});
+
+// ── FAQ BRANCH ──
+bot.action('faq_about', (ctx) => {
+  ctx.reply('Santiago — це простір для тілесних і духовних практик, нетворкінгу та розвитку.\n\nМи об\'єднуємо майстрів та тих, хто шукає свій шлях.');
+  ctx.answerCbQuery();
+});
+
+bot.action('faq_directions', (ctx) => {
+  ctx.reply('Наші основні напрямки:\n- Йога та медитація\n- Тілесна терапія та масаж\n- Цвяхостояння\n- Бізнес-нетворкінг (для резидентів клубу)');
+  ctx.answerCbQuery();
+});
+
+bot.action('faq_club', (ctx) => {
+  ctx.reply('Клуб Santiago — це закрита спільнота для постійних резидентів. Резиденти отримують доступ до ексклюзивних подій, знижки на оренду та можливість брати участь у внутрішніх зустрічах.\n\nЩоб стати резидентом, подайте заявку через меню.');
+  ctx.answerCbQuery();
+});
+
+// ── CLUB APPLICATION BRANCH ──
+bot.action('apply_club', (ctx) => {
+  ctx.session = { state: 'applying_name' };
+  ctx.reply('Чудово! Давайте розпочнемо. \n\nЯк до вас звертатися (Ім\'я та Прізвище)?');
+  ctx.answerCbQuery();
+});
+
+// ── INSTRUCTOR WIZARD BRANCH ──
+bot.action('instructor_menu', async (ctx) => {
+  if (ctx.userRole !== 'instructor' && ctx.userRole !== 'admin') {
+    return ctx.answerCbQuery('У вас немає доступу до цього меню.', { show_alert: true });
+  }
+
+  ctx.reply(
+    'Панель Інструктора',
+    Markup.inlineKeyboard([
+      [Markup.button.callback('➕ Створити нову подію', 'create_event')]
+    ])
+  );
+  ctx.answerCbQuery();
+});
+
+bot.action('create_event', (ctx) => {
+  if (ctx.userRole !== 'instructor' && ctx.userRole !== 'admin') return ctx.answerCbQuery('Доступ заборонено.', { show_alert: true });
+  
+  ctx.session = { state: 'event_title' };
+  ctx.reply('Створення події: Крок 1/4\n\nВведіть назву події (напр. "Ранкова Йога"):');
+  ctx.answerCbQuery();
+});
+
+// ── TEXT HANDLER (STATE MACHINE) ──
+bot.on('text', async (ctx, next) => {
+  if (!ctx.session || !ctx.session.state) return next();
+
+  const state = ctx.session.state;
+  const text = ctx.message.text;
+
+  // Club Application States
+  if (state === 'applying_name') {
+    ctx.session.appName = text;
+    ctx.session.state = 'applying_occ';
+    ctx.reply('Чим ви займаєтесь (ваша професія чи проєкт)?');
+    return;
+  }
+  if (state === 'applying_occ') {
+    ctx.session.appOcc = text;
+    ctx.session.state = 'applying_mot';
+    ctx.reply('Чому ви хочете приєднатися до клубу?');
+    return;
+  }
+  if (state === 'applying_mot') {
+    ctx.session.appMot = text;
+    ctx.session.state = null; // Clear state
+    
+    ctx.reply('Дякуємо! Вашу заявку відправлено адміністраторам. Ми повідомимо вас про результати.');
+
+    // Save to profiles (update)
+    await supabase.from('profiles').update({
+      full_name: ctx.session.appName,
+      occupation: ctx.session.appOcc,
+      motivation: ctx.session.appMot
+    }).eq('telegram_id', ctx.from.id);
+
+    // Notify Admins
+    if (ADMIN_CHAT_ID) {
+      bot.telegram.sendMessage(
+        ADMIN_CHAT_ID,
+        `🔔 **Нова заявка в Клуб**\n\nІм'я: ${ctx.session.appName}\nTG: @${ctx.from.username || 'немає'} (${ctx.from.id})\n\n**Чим займається**: ${ctx.session.appOcc}\n**Мотивація**: ${ctx.session.appMot}`,
+        Markup.inlineKeyboard([
+          [Markup.button.callback(`✅ Схвалити`, `approve_${ctx.from.id}`)],
+          [Markup.button.callback(`❌ Відхилити`, `reject_${ctx.from.id}`)]
+        ])
+      );
+    }
+    return;
+  }
+
+  // Event Creation States
+  if (state === 'event_title') {
+    ctx.session.eventTitle = text;
+    ctx.session.state = 'event_desc';
+    ctx.reply('Крок 2/4\n\nВведіть короткий опис події:');
+    return;
+  }
+  if (state === 'event_desc') {
+    ctx.session.eventDesc = text;
+    ctx.session.state = 'event_date';
+    ctx.reply('Крок 3/4\n\nВведіть дату та час початку у форматі YYYY-MM-DD HH:MM (напр. 2026-06-01 10:00):');
+    return;
+  }
+  if (state === 'event_date') {
+    // Very basic validation
+    const dateObj = new Date(text);
+    if (isNaN(dateObj.getTime())) {
+      ctx.reply('❌ Неправильний формат дати. Спробуйте ще раз у форматі YYYY-MM-DD HH:MM (напр. 2026-06-01 10:00):');
+      return;
+    }
+    ctx.session.eventStart = dateObj.toISOString();
+    
+    // Assume 1.5 hours duration for MVP
+    const endObj = new Date(dateObj.getTime() + 90 * 60000);
+    ctx.session.eventEnd = endObj.toISOString();
+
+    ctx.session.state = null; // Clear state
+    
+    ctx.reply('Крок 4/4\n\nОберіть тип події:', Markup.inlineKeyboard([
+      [Markup.button.callback('🟢 Публічна (Для всіх)', 'event_type_public')],
+      [Markup.button.callback('🟣 Клубна (Тільки резиденти)', 'event_type_club')],
+      [Markup.button.callback('⚪️ Внутрішня (Тільки стаф)', 'event_type_internal')]
+    ]));
+    return;
+  }
+
+  return next();
+});
+
+// ── EVENT TYPE SELECTION ──
+bot.action(/event_type_(public|club|internal)/, async (ctx) => {
+  if (!ctx.session || !ctx.session.eventTitle) return ctx.answerCbQuery('Помилка сесії. Спробуйте знову.', { show_alert: true });
+  if (ctx.userRole !== 'instructor' && ctx.userRole !== 'admin') return ctx.answerCbQuery('Доступ заборонено.', { show_alert: true });
+
+  const type = ctx.match[1];
+  
+  // Get instructor ID from profiles
+  const { data: profile } = await supabase.from('profiles').select('id').eq('telegram_id', ctx.from.id).single();
+
+  const { error } = await supabase.from('events').insert({
+    title: ctx.session.eventTitle,
+    description: ctx.session.eventDesc,
+    start_time: ctx.session.eventStart,
+    end_time: ctx.session.eventEnd,
+    type: type,
+    instructor_id: profile ? profile.id : null,
+    status: 'confirmed'
+  });
+
+  if (error) {
+    console.error('Error creating event:', error);
+    ctx.reply('❌ Помилка при створенні події.');
+  } else {
+    ctx.reply(`✅ Подію "${ctx.session.eventTitle}" успішно створено та додано в розклад!`);
+  }
+  
+  ctx.session = null;
+  ctx.answerCbQuery();
+});
+
+// ── ADMIN APPROVALS ──
+bot.action(/approve_(\d+)/, async (ctx) => {
+  const tgId = ctx.match[1];
+  
+  const { error } = await supabase
+    .from('profiles')
+    .update({ role: 'resident' })
+    .eq('telegram_id', tgId);
+
+  if (error) {
+    console.error(error);
+    return ctx.answerCbQuery('Помилка.', { show_alert: true });
+  }
+
+  ctx.editMessageText(ctx.callbackQuery.message.text + '\n\n✅ СХВАЛЕНО');
+  bot.telegram.sendMessage(tgId, '🎉 Вітаємо! Ваша заявка до клубу схвалена. Тепер ви маєте доступ до клубних подій на сайті.');
+});
+
+bot.action(/reject_(\d+)/, (ctx) => {
+  const tgId = ctx.match[1];
+  ctx.editMessageText(ctx.callbackQuery.message.text + '\n\n❌ ВІДХИЛЕНО');
+  bot.telegram.sendMessage(tgId, 'На жаль, вашу заявку на вступ до клубу наразі відхилено.');
+});
+
+// Launch bot
+bot.launch().then(() => console.log('Bot is running...'));
+
+// Enable graceful stop
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
