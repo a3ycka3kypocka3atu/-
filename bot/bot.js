@@ -249,6 +249,31 @@ bot.action(/reject_(\d+)/, (ctx) => {
   bot.telegram.sendMessage(tgId, 'На жаль, вашу заявку на вступ до клубу наразі відхилено.');
 });
 
+// ── GROUP HANDLERS ──
+bot.on('new_chat_members', (ctx) => {
+  const newMembers = ctx.message.new_chat_members;
+  newMembers.forEach(member => {
+    if (member.is_bot) return;
+    
+    const name = member.first_name || 'Друже';
+    ctx.reply(
+      `Вітаємо у спільноті Santiago, ${name}! 🌿\n\nЯ — Santiago Bot. Допомагаю з розкладом та вступом до нашого закритого клубу.\n\nНапишіть мені в особисті повідомлення (@santioago_bot), щоб:\n- Подивитися розклад\n- Подати заявку на резидентство\n- Забронювати студію`
+    );
+  });
+});
+
+bot.command('info', (ctx) => {
+  ctx.reply(
+    '🌿 **Santiago Bot**\n\nЯ — ваш цифровий провідник у просторі Santiago.\n\n📍 **Що я вмію:**\n- Надаю FAQ про простір\n- Приймаю заявки в закритий клуб\n- Допомагаю інструкторам створювати події\n- Синхронізую розклад із сайтом\n\nНатисніть /start в особистих повідомленнях, щоб почати!'
+  );
+});
+
+bot.command('help', (ctx) => {
+  ctx.reply(
+    'Потрібна допомога? 🤝\n\n1. Для особистого використання: напишіть мені в @santioago_bot\n2. Для розкладу: відвідайте наш сайт\n3. Для питань: зверніться до адміністраторів'
+  );
+});
+
 // Launch bot
 bot.launch().then(() => console.log('Bot is running...'));
 
